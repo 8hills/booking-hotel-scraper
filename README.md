@@ -33,6 +33,7 @@ booking_scraper/
 ├── graphics/                 # Folder containing the UI graphics
 ├── README.md                 # English version
 ├── requirements.txt          # Required libraries
+├── icon.png                  # Image at the top of GUI
 ````
 
 
