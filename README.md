@@ -2,18 +2,25 @@
 
 This Python project uses **Selenium** and **Tkinter** to automatically extract hotel data from **Booking.com**. It features a graphical interface to define search parameters (destination, dates), then stores the result in an Excel file. Ideal for comparing hotels around an event location such as a wedding, festival, or conference.
 
+## EDITS MADE
+- **Enchanced GUI** fully ready to be compiled as an executable file with new added progress bar to inform about program status.
+- **Commented out the Adress, GPS coordinates, Star rating, Distance from a fixed location functions** Due to their problematic behaviour and to provide faster compilation - ***If you wish to still use these functions simply uncomment them.***
+- **New Inputs** such as: Number. of adults, children, rooms.
+- **Calendar Date Picker** to simplify the process of Check-in and Check-out date input.
+- **Re-wrote scroll_until_all_hotels_loaded** to ensure every hotel from your Destination is loaded.
+
 ## ✨ Features
 
 - **User-friendly GUI** with `Tkinter`
 - **Automated hotel data extraction**:
   - Hotel name
-  - Star rating
+  - Star rating ***# commented out #***
   - Price
   - Review score
   - Booking.com link
-  - Address and GPS coordinates
-  - Distance from a fixed location
-- **Distance calculation** using `geopy`
+  - Address and GPS coordinates ***# commented out #***
+  - Distance from a fixed location ***# commented out #***
+- **Distance calculation** using `geopy` ***# commented out #***
 - **Excel export** with `pandas` and `openpyxl`
 
 
@@ -23,8 +30,8 @@ This Python project uses **Selenium** and **Tkinter** to automatically extract h
 booking_scraper/
 ├── hotels_booking.py         # Main script
 ├── chromedriver/             # Folder containing the ChromeDriver
+├── graphics/                 # Folder containing the UI graphics
 ├── README.md                 # English version
-├── README_fr.md              # French version
 ├── requirements.txt          # Required libraries
 ````
 
@@ -41,6 +48,7 @@ booking_scraper/
   * `pandas`
   * `geopy`
   * `openpyxl`
+  * `tkcalendar`
 
 
 ## ⚙️ Installation
@@ -48,7 +56,7 @@ booking_scraper/
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/ALeterouin/Booking_scraper.git
+   git clone https://github.com/8hills/Booking_scraper.git
    ```
    
    ```bash
@@ -73,12 +81,14 @@ booking_scraper/
    ```
 
 2. In the GUI window:
-
+   * Enter number of **adults**
+   * Enter number of **children (i.e people in the span of age 0-17)**
    * Enter your **destination**
+   * Enter number of **rooms**
    * Select your **check-in** and **check-out** dates (`YYYY-MM-DD`)
-   * Click **Start Scraping**
+   * Click **Start**
 
-3. Once scraping is complete, an Excel file will be generated with the results:
+4. Once scraping is complete, an Excel file will be generated with the results:
 
    ```
    Hotels - <Destination> - <Checkin> - <Checkout>.xlsx
@@ -94,22 +104,12 @@ booking_scraper/
 * `run_scraping(destination, checkin, checkout)`: Orchestrates the scraping process and writes to Excel.
 * `on_submit()`: GUI callback triggered when the user clicks the scraping button.
 
-### Distance Calculation Location:
-
-By default, the distance is calculated from this fixed location:
-
-```python
-event_coords = (36.74196135173365, 15.11610252956532)
-```
-
-You can replace these coordinates with your own event location.
-
 
 ## 📄 Sample Excel Output
 
-| Hotel Name   | Stars | Price (€) | Score (/10) | Address           | Latitude | Longitude | Distance (km) | Booking Link |
-| ------------ | ----- | --------- | ----------- | ----------------- | -------- | --------- | ------------- | ------------ |
-| Hotel Sample | 4     | 142.00    | 8.2         | Via Roma 12, Rome | 41.9028  | 12.4964   | 2.4           | https\://... |
+| Hotel Name   | Price (Currency based on Booking's link location) | Score (/10) | Booking Link |
+| ------------ | ------------------------------------------------- | ----------- | ------------ |
+| Hotel Sample |                       142.00                      | 8.2         | https\://... |
 
 
 ## ⚠️ Disclaimer
@@ -120,6 +120,7 @@ This script is for **educational purposes only**. Scraping Booking.com may viola
 ## 👤 Author
 
 Developed by [ALeterouin](https://github.com/ALeterouin)
+Edited by [8hills](https://github.com/8hills)
 
 Free to use and modify
 
